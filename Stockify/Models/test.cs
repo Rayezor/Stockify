@@ -1,7 +1,11 @@
-﻿namespace Stockify.Models
+﻿using System.Net.Security;
+
+namespace Stockify.Models
 {
     public class test
     {
         private string Name;
+         How are you 
+
     }
 }
