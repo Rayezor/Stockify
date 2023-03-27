@@ -5,7 +5,7 @@ namespace Stockify.Models
     public class test
     {
         private string Name;
-         How are you 
+        public int Value;
 
     }
 }
