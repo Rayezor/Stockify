@@ -25,6 +25,22 @@ namespace Stockify.Controllers
             return View(cryptolist);
         }
 
+        public ActionResult CreateCrypto(Crypto newcrypto)
+        {
+            if (!ModelState.IsValid)
+            {
+                cryptolist.Add(newcrypto);
+                return View();
+
+            }
+            else
+            {
+                //ModelState.Clear();
+                return RedirectToAction("Crypto");
+            }
+
+        }
+
       
     }
 }

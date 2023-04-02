@@ -16,6 +16,7 @@ namespace Stockify.Models
         public double MarketCap { get; set; }
 
         [Required(ErrorMessage = "Price Cannot be blank")]
+        [Display(Name = "Price in €")]
         public double Price { get; set; }
 
         [Required(ErrorMessage = "Date Cannot be blank")]
