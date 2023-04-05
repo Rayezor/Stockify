@@ -19,12 +19,20 @@ namespace Stockify.Models
             RealEstate
         }
         [Key]
-        [Required]
+        [Required(ErrorMessage = "Symbol Cannot be blank")]
         public string Symbol { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Name Cannot be blank")]
         public string Name { get; set; }
         public Categories Category { get; set; }
-        public DateTime IPODate { get; set; }
-        public float Price { get; set; }
+        [Display(Name = "Market Cap(in Billions)")]
+        public double MarketCap { get; set; }
+        [Display(Name = "Date of IPO")]
+        public DateOnly IPODate { get; set; }
+        [Display(Name = "Price in €")]
+        public double Price { get; set; }
+        [Display(Name = "PE Ratio")]
+        public double PERatio { get; set; }
+        public string Industry { get; set; }
+        public string Exchange { get; set; }
     }
 }
