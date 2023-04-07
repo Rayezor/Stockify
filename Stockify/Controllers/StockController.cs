@@ -9,41 +9,55 @@ namespace Stockify.Controllers
     {
         private static List<Stock> stockList = new List<Stock>()
         {
-            new Stock{
+            new Stock
+            {
                 Symbol="TSLA", 
                 Name="Tesla Inc.", 
-                Category=Categories.Discretionary, 
+                Category=Categories.ConsumerDiscretionary, 
                 MarketCap=656.552, 
-                IPODate=new DateOnly(2010, 6, 29), 
                 Price=198.13, 
-                PERatio=57.45, 
+                EPS=3.44, 
                 Industry = "Auto Manufacturing", 
-                Exchange="NASDAQ-GS"},
-            new Stock{
+                Exchange="NASDAQ-GS"
+            },
+            new Stock
+            {
                 Symbol="AMZN",
                 Name="Amazon.com, Inc.",
-                Category=Categories.Discretionary,
+                Category=Categories.ConsumerDiscretionary,
                 MarketCap=1059,
-                IPODate=new DateOnly(1997, 5, 15),
                 Price=102.71,
-                PERatio=77,
+                EPS = -0.28,
                 Industry = "Catalog/Specialty Distribution",
-                Exchange="NASDAQ-GS"},
-            new Stock{
+                Exchange="NASDAQ-GS"
+            },
+            new Stock
+            {
                 Symbol="AAPL",
                 Name="Apple Inc.",
                 Category=Categories.Technology,
                 MarketCap=2623,
-                IPODate=new DateOnly(1980, 12, 12),
                 Price=165.91,
-                PERatio=28.20,
+                EPS=5.93,
                 Industry = "Computer Manufacturing",
-                Exchange="NASDAQ-GS"},
+                Exchange="NASDAQ-GS"
+            },
+            new Stock
+            {
+                Symbol="MAERSK-B.CO",
+                Name="A.P. Møller - Mærsk A/S",
+                Category=Categories.Industrials,
+                MarketCap=212.814,
+                Price=11470.00,
+                EPS=10846.03,
+                Industry = "Freight transport",
+                Exchange="OMX"
+            },
         };
         // GET: StockController
         public ActionResult Stock()
         {
-            return View(stockList);
+            return View(stockList.OrderBy(s => s.Symbol).ToList());
         }
 
         // GET: StockController/Details/5
@@ -65,7 +79,20 @@ namespace Stockify.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                Stock newStock = new Stock() {
+                    Symbol = collection["Symbol"],
+                    Name = collection["Name"],
+                    // Category = Categories.Parse(),
+                    MarketCap = int.Parse(collection["MarketCap"]),
+                    Price = int.Parse(collection["Price"]),
+                    Industry = collection["Industry"],
+                    Exchange = collection["Exchange"],
+                    EPS = int.Parse(collection["EPS"]),
+
+                };
+                stockList.Add(newStock);
+
+                return RedirectToAction("Index");
             }
             catch
             {
