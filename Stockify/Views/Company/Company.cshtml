@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Stockify.Models.Company>
+
+@{
+    ViewData["Title"] = "Company";
+}
+
+<h1>Company</h1>
+
+<p>
+    <a asp-action="CreateCompany">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valuation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Market)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Industry)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employees)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valuation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Market)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Industry)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
