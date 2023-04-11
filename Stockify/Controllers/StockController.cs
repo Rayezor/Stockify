@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Stockify.Models;
+using static Stockify.Data.Enums.Category;
 using static Stockify.Models.Stock;
 
 namespace Stockify.Controllers
@@ -11,59 +13,55 @@ namespace Stockify.Controllers
         {
             new Stock
             {
-                Symbol="TSLA", 
+                Id="TSLA", 
                 Name="Tesla Inc.", 
                 Category=Categories.ConsumerDiscretionary, 
                 MarketCap=656.552, 
                 Price=198.13, 
                 EPS=3.44, 
-                Industry = "Auto Manufacturing", 
                 Exchange="NASDAQ-GS"
             },
             new Stock
             {
-                Symbol="AMZN",
+                Id="AMZN",
                 Name="Amazon.com, Inc.",
                 Category=Categories.ConsumerDiscretionary,
                 MarketCap=1059,
                 Price=102.71,
                 EPS = -0.28,
-                Industry = "Catalog/Specialty Distribution",
                 Exchange="NASDAQ-GS"
             },
             new Stock
             {
-                Symbol="AAPL",
+                Id="AAPL",
                 Name="Apple Inc.",
                 Category=Categories.Technology,
                 MarketCap=2623,
                 Price=165.91,
                 EPS=5.93,
-                Industry = "Computer Manufacturing",
                 Exchange="NASDAQ-GS"
             },
             new Stock
             {
-                Symbol="MAERSK-B.CO",
+                Id="MAERSK-B.CO",
                 Name="A.P. Møller - Mærsk A/S",
                 Category=Categories.Industrials,
                 MarketCap=212.814,
                 Price=11470.00,
                 EPS=10846.03,
-                Industry = "Freight transport",
                 Exchange="OMX"
             },
         };
         // GET: StockController
         public ActionResult Stock()
         {
-            return View(stockList.OrderBy(s => s.Symbol).ToList());
+            return View(stockList.OrderBy(s => s.Id).ToList());
         }
 
         // GET: StockController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            return View(id);
         }
 
         // GET: StockController/Create
@@ -75,49 +73,42 @@ namespace Stockify.Controllers
         // POST: StockController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Stock newStock)
         {
-            try
+            if (ModelState.IsValid)
             {
-                Stock newStock = new Stock() {
-                    Symbol = collection["Symbol"],
-                    Name = collection["Name"],
-                    // Category = Categories.Parse(),
-                    MarketCap = int.Parse(collection["MarketCap"]),
-                    Price = int.Parse(collection["Price"]),
-                    Industry = collection["Industry"],
-                    Exchange = collection["Exchange"],
-                    EPS = int.Parse(collection["EPS"]),
-
-                };
                 stockList.Add(newStock);
-
-                return RedirectToAction("Index");
+                return RedirectToAction("Stock");
             }
-            catch
+            else
             {
-                return View();
+                return View(newStock);
             }
         }
 
         // GET: StockController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
-            return View();
+             return View();
         }
 
         // POST: StockController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(string id, IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                Stock editFx = stockList.FirstOrDefault(p => p.Id.Equals(id));
+                editFx.Price = int.Parse(collection["Price"]);
+                editFx.MarketCap = int.Parse(collection["MarketCap"]);
+                editFx.EPS = int.Parse(collection["EPS"]);
+
+                return RedirectToAction("Stock");
             }
             catch
             {
-                return View();
+                return View(id);
             }
         }
 
