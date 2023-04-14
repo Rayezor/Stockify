@@ -23,11 +23,6 @@
                 <span asp-validation-for="Employees" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Valuation" class="control-label"></label>
-                <input asp-for="Valuation" class="form-control" />
-                <span asp-validation-for="Valuation" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Market" class="control-label"></label>
                 <input asp-for="Market" class="form-control" />
                 <span asp-validation-for="Market" class="text-danger"></span>
@@ -38,6 +33,21 @@
                 <span asp-validation-for="Industry" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Headquarters" class="control-label"></label>
+                <input asp-for="Headquarters" class="form-control" />
+                <span asp-validation-for="Headquarters" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -45,7 +55,7 @@
 </div>
 
 <div>
-    <a asp-action="Company">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

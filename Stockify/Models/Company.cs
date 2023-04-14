@@ -17,13 +17,18 @@ namespace Stockify.Models
         [Display(Name = "Number of Employees)")]
         public int Employees { get; set; }
 
-        [Display(Name = "Valuation (€))")]
-        public int Valuation { get; set; }
-
         [Display(Name = "Stock Market)")]
         public string Market { get; set; }
 
         public string Industry { get; set; }
+
+        public string Address { get; set; }
+
+        [Display(Name = "Phone Number)")]
+        public string PhoneNumber { get; set; }
+
+        [Display(Name = "Headquarters Location)")]
+        public string Headquarters { get; set; } 
 
 
 

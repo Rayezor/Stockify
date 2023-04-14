@@ -9,16 +9,56 @@ namespace Stockify.Controllers
     {
         private static List<Company> companylist = new List<Company>()
         {
+            new Company
+            {
+                CompanyName= "Tesla Inc.",
+                StartDate = new DateOnly(2003, 7, 1),
+                Employees = 127855,
+                Market = "Stock",
+                Industry = "Auto Manufacturing",
+                Address = "1501 Page Mill Road Palo Alto, CA 94304",
+                PhoneNumber = "+1 650-681-5000",
+                Headquarters = "California, USA"
+            },
 
             new Company
             {
-                CompanyName= "Test Company",
-                StartDate = new DateOnly(2010, 1, 2),
-                Employees = 10,
-                Valuation = 12,
-                Market = "Crypto",
-                Industry = "Finance"
+                CompanyName= "Amazon.com, Inc.",
+                StartDate = new DateOnly(1994, 7, 5),
+                Employees = 1541000,
+                Market = "Stock",
+                Industry = "Specialty Distribution",
+                Address = "410 Terry Ave N, Seattle 98109, WA",
+                PhoneNumber = "(206) 266-1000",
+                Headquarters = "Washington, USA"
             },
+
+            new Company
+            {
+                CompanyName= "Apple Inc.",
+                StartDate = new DateOnly(1976, 4, 1),
+                Employees = 164000,
+                Market = "Stock",
+                Industry = "Computer Manufacturing",
+                Address = "1 Infinite Loop in Cupertino, California, United States",
+                PhoneNumber = "+1 408-996-1010",
+                Headquarters = "California, USA"
+            },
+            new Company
+            {
+                CompanyName= "A.P. Møller - Mærsk A/Sc",
+                StartDate = new DateOnly(2013, 12, 20),
+                Employees = 93000,
+                Market = "Stock",
+                Industry = "Freight Transport",
+                Address = "Esplanaden 50, 1098 København K, Denmark",
+                PhoneNumber = "+45 33 63 33 63",
+                Headquarters = "Copenhagen, Denmark"
+            },
+
+           
+           
+
         };
 
 

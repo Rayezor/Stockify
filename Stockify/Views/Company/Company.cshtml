@@ -19,13 +19,19 @@
                 @Html.DisplayNameFor(model => model.Employees)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Valuation)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Market)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Industry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Headquarters)
             </th>
             <th></th>
         </tr>
@@ -40,13 +46,19 @@
                 @Html.DisplayFor(modelItem => item.Employees)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Valuation)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Market)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Industry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Headquarters)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
