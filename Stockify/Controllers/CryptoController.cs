@@ -22,6 +22,11 @@ namespace Stockify.Controllers
             return View(cryptolist);
         }
 
+        public ActionResult Details(string id)
+        {
+            return View(id);
+        }
+
         public ActionResult CreateCrypto(Crypto newcrypto)
         {
             if (ModelState.IsValid)
@@ -38,6 +43,39 @@ namespace Stockify.Controllers
 
         }
 
-      
+
+        // GET: CryptoController/Edit
+        public ActionResult EditCrypto(string id)
+        {
+            var crypt = cryptolist.Where(c => c.Id == id).FirstOrDefault();
+            return View(crypt);
+        }
+
+
+        //POST: CryptoController/Edit
+       [HttpPost]
+       [ValidateAntiForgeryToken]
+        public ActionResult EditCrypto(string Id, IFormCollection cyyptocollection)
+        {
+            try
+            {
+                Crypto editcyrpto = cryptolist.FirstOrDefault(p => p.Id.Equals(Id));
+                editcyrpto.Name = cyyptocollection["Name"];
+                editcyrpto.Prefix = cyyptocollection["Prefix"];
+                editcyrpto.MarketCap = int.Parse(cyyptocollection["MarketCap"]);
+                editcyrpto.Price = int.Parse(cyyptocollection["Price"]);
+                editcyrpto.CreatedBy = cyyptocollection["CreatedBy"];
+                return RedirectToAction("Crypto");
+            }
+            catch
+            {
+                return View(Id);
+            }
+        }
+
+
+
+
+
     }
 }
