@@ -75,6 +75,36 @@ namespace Stockify.Controllers
 
 
 
+        public ActionResult DeleteCrypto(string id)
+        {
+            var crypt = cryptolist.Where(c => c.Id == id).FirstOrDefault();
+            return View(crypt);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteCrypto(string Id, IFormCollection cyyptocollection)
+        {
+            
+
+            try
+            {
+
+                var crypt = cryptolist.Where(c => c.Id == Id).FirstOrDefault();
+                cryptolist.Remove(crypt);
+                return RedirectToAction("Crypto");
+
+            }
+
+            catch
+            {
+                return View(Id);
+            }
+
+        }
+
+
 
 
     }
