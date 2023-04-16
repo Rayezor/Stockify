@@ -5,6 +5,12 @@ namespace Stockify.Models
 {
     public class Crypto
     {
+        [Key]
+        [Required(ErrorMessage = "Symbol Cannot be blank")]
+        [Display(Name = "Creator ID")]
+        public string Id { get; set; }
+
+
         [Required(ErrorMessage = "Name Cannot be blank")]
         public string Name { get; set; }
 
