@@ -1,0 +1,63 @@
+﻿@model Stockify.Models.Company
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Company</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CompanyName" class="control-label"></label>
+                <input asp-for="CompanyName" class="form-control" />
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employees" class="control-label"></label>
+                <input asp-for="Employees" class="form-control" />
+                <span asp-validation-for="Employees" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Market" class="control-label"></label>
+                <input asp-for="Market" class="form-control" />
+                <span asp-validation-for="Market" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Industry" class="control-label"></label>
+                <input asp-for="Industry" class="form-control" />
+                <span asp-validation-for="Industry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Headquarters" class="control-label"></label>
+                <input asp-for="Headquarters" class="form-control" />
+                <span asp-validation-for="Headquarters" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Company">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

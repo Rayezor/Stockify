@@ -70,9 +70,18 @@ namespace Stockify.Controllers
         }
 
         // GET: CompanyController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            Company found = companylist.FirstOrDefault(p => p.CompanyName.ToLower().Equals(id.ToLower()));
+            if (found != null)
+            {
+                return View(found);
+            }
+            else
+            {
+                return RedirectToAction("Company");
+            }
+            ;
         }
 
         // GET: CompanyController/Create
@@ -102,9 +111,10 @@ namespace Stockify.Controllers
         }
 
         // GET: CompanyController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            Company found = companylist.FirstOrDefault(p => p.CompanyName.ToLower().Equals(id.ToLower()));
+            return View(found);
         }
 
         // POST: CompanyController/Edit/5
@@ -113,19 +123,26 @@ namespace Stockify.Controllers
      
 
         // GET: CompanyController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            Company found = companylist.FirstOrDefault(p => p.CompanyName.ToLower().Equals(id.ToLower()));
+
+            return View(found);
         }
 
         // POST: CompanyController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(string id, IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+
+                Company found = companylist.FirstOrDefault(p => p.CompanyName.ToLower().Equals(id.ToLower()));
+                companylist.Remove(found);
+
+                //companylist.Remove(found);
+                return RedirectToAction("Company");
             }
             catch
             {
