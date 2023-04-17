@@ -59,13 +59,21 @@ namespace Stockify.Controllers
         }
 
         // GET: StockController/Details/5
-        public ActionResult Details(string id)
+        public ActionResult DetailsStock(string id)
         {
-            return View(id);
+            Stock found = stockList.FirstOrDefault(p => p.Id.Equals(id));
+            if (found != null)
+            {
+                return View(found);
+            }
+            else
+            {
+                return RedirectToAction("Stock");
+            }
         }
 
         // GET: StockController/Create
-        public ActionResult Create()
+        public ActionResult CreateStock()
         {
             return View();
         }
@@ -73,7 +81,7 @@ namespace Stockify.Controllers
         // POST: StockController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Stock newStock)
+        public ActionResult CreateStock(Stock newStock)
         {
             if (ModelState.IsValid)
             {
@@ -87,22 +95,25 @@ namespace Stockify.Controllers
         }
 
         // GET: StockController/Edit/5
-        public ActionResult Edit()
+        public ActionResult EditStock(string id)
         {
-             return View();
+            Stock found = stockList.FirstOrDefault(p => p.Id.Equals(id));
+            return View(found);
         }
 
         // POST: StockController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(string id, IFormCollection collection)
+        public ActionResult EditStock(string id, IFormCollection stockCollection)
         {
             try
             {
                 Stock editFx = stockList.FirstOrDefault(p => p.Id.Equals(id));
-                editFx.Price = int.Parse(collection["Price"]);
-                editFx.MarketCap = int.Parse(collection["MarketCap"]);
-                editFx.EPS = int.Parse(collection["EPS"]);
+                editFx.Name = stockCollection["Name"];
+                editFx.Price = int.Parse(stockCollection["Price"]);
+                editFx.MarketCap = int.Parse(stockCollection["MarketCap"]);
+                editFx.EPS = int.Parse(stockCollection["EPS"]);
+                editFx.Quantity = int.Parse(stockCollection["Quantity"]);
 
                 return RedirectToAction("Stock");
             }
@@ -113,7 +124,7 @@ namespace Stockify.Controllers
         }
 
         // GET: StockController/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult DeleteStock(string id)
         {
             var stock = stockList.Where(c => c.Id == id).FirstOrDefault();
             return View(stock);
@@ -122,17 +133,20 @@ namespace Stockify.Controllers
         // POST: StockController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, IFormCollection collection)
+        public ActionResult DeleteStock(string Id, IFormCollection stockCollection)
         {
             try
             {
-                var crypt = stockList.Where(c => c.Id == id).FirstOrDefault();
-                stockList.Remove(crypt);
+
+                var stock = stockList.Where(c => c.Id == Id).FirstOrDefault();
+                stockList.Remove(stock);
                 return RedirectToAction("Stock");
+
             }
+
             catch
             {
-                return View(id);
+                return View(Id);
             }
         }
     }

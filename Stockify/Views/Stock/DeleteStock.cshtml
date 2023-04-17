@@ -1,0 +1,80 @@
+﻿@model Stockify.Models.Stock
+
+@{
+    ViewData["Title"] = "Delete Stock";
+}
+
+<h1>Delete Stock</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Stock</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MarketCap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MarketCap)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Exchange)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Exchange)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EPS)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EPS)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PERatio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PERatio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalStockValue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalStockValue)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteStock">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Stock">Back to List</a>
+    </form>
+</div>

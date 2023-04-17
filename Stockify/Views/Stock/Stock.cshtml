@@ -7,7 +7,7 @@
 <h1>Stock</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreateStock">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -61,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.Exchange)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "EditStock", new {id=item.Id}) |
+                    @Html.ActionLink("Details", "DetailsStock", new {id=item.Id}) |
+                    @Html.ActionLink("Delete", "DeleteStock", new {id=item.Id})
             </td>
         </tr>
 }

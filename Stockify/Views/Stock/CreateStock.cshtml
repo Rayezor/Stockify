@@ -1,16 +1,17 @@
-﻿@model Stockify.Models.Stock
+﻿@using static Stockify.Data.Enums.Category;
+@model Stockify.Models.Stock
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create Stock";
 }
 
-<h1>Edit</h1>
+<h1>Create Stock</h1>
 
 <h4>Stock</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="CreateStock">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
@@ -24,7 +25,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
+                <select asp-for="Category" class="form-control" asp-items="Html.GetEnumSelectList<Categories>()" multiple>
+                    <option value="">Please choose category</option>
+                </select>
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,29 +51,14 @@
                 <span asp-validation-for="EPS" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PERatio" class="control-label"></label>
-                <input asp-for="PERatio" class="form-control" />
-                <span asp-validation-for="PERatio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control" />
-                <span asp-validation-for="Quantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalStockValue" class="control-label"></label>
-                <input asp-for="TotalStockValue" class="form-control" />
-                <span asp-validation-for="TotalStockValue" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Stock">Back to List</a>
 </div>
 
 @section Scripts {

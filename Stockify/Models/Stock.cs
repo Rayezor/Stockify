@@ -8,7 +8,7 @@ namespace Stockify.Models
     {
         [Key]
         [Required(ErrorMessage = "Symbol Cannot be blank")]
-        [Display(Name = "Ticket Symbol)")]
+        [Display(Name = "Ticket Symbol")]
         public string Id { get; set; }
         [Required(ErrorMessage = "Name Cannot be blank")]
         public string Name { get; set; }
