@@ -113,23 +113,26 @@ namespace Stockify.Controllers
         }
 
         // GET: StockController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            var stock = stockList.Where(c => c.Id == id).FirstOrDefault();
+            return View(stock);
         }
 
         // POST: StockController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(string id, IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var crypt = stockList.Where(c => c.Id == id).FirstOrDefault();
+                stockList.Remove(crypt);
+                return RedirectToAction("Stock");
             }
             catch
             {
-                return View();
+                return View(id);
             }
         }
     }

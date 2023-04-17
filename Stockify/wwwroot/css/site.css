@@ -1,18 +1,55 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: azure;
+}
+
+h1 {
+    color: #57D2B1;
+}
+
+h4 {
+    color: #57D2B1;
+}
+
+p {
+    color: #6BA2E8;
+}
+
+.display-4 {
+    color: blue;
+}
+
+.steps {
+    color: #33B8FF;
+}
+
+.steps {
+    list-style-position: inside;
+}
+
+.control-label {
+    color: #6BA2E8;
+}
+
+.form-control {
+    color: #6BA2E8;
+}
+
+.form-check-label {
+    color: #6BA2E8;
 }

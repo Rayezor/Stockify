@@ -13,6 +13,21 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="MarketCap" class="control-label"></label>
                 <input asp-for="MarketCap" class="form-control" />
                 <span asp-validation-for="MarketCap" class="text-danger"></span>
@@ -23,14 +38,29 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Exchange" class="control-label"></label>
+                <input asp-for="Exchange" class="form-control" />
+                <span asp-validation-for="Exchange" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="EPS" class="control-label"></label>
                 <input asp-for="EPS" class="form-control" />
                 <span asp-validation-for="EPS" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="PERatio" class="control-label"></label>
+                <input asp-for="PERatio" class="form-control" />
+                <span asp-validation-for="PERatio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Quantity" class="control-label"></label>
                 <input asp-for="Quantity" class="form-control" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalStockValue" class="control-label"></label>
+                <input asp-for="TotalStockValue" class="form-control" />
+                <span asp-validation-for="TotalStockValue" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
