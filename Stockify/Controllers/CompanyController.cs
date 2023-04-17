@@ -118,35 +118,30 @@ namespace Stockify.Controllers
         }
 
         // POST: CompanyController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-     
+      
+
 
         // GET: CompanyController/Delete/5
         public ActionResult Delete(string id)
         {
             Company found = companylist.FirstOrDefault(p => p.CompanyName.ToLower().Equals(id.ToLower()));
-
             return View(found);
         }
 
-        // POST: CompanyController/Delete/5
+        // POST: StockController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, IFormCollection collection)
+        public ActionResult Delete(string id, Company collection)
         {
             try
             {
-
                 Company found = companylist.FirstOrDefault(p => p.CompanyName.ToLower().Equals(id.ToLower()));
                 companylist.Remove(found);
-
-                //companylist.Remove(found);
                 return RedirectToAction("Company");
             }
             catch
             {
-                return View();
+                return View(id);
             }
         }
     }
