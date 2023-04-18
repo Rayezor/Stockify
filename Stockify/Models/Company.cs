@@ -12,7 +12,7 @@ namespace Stockify.Models
         public string CompanyName { get; set; }
 
         [Display(Name = "Company Formation Date")]
-        public DateOnly StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
         [Display(Name = "Number of Employees")]
         public int Employees { get; set; }

@@ -12,7 +12,7 @@ namespace Stockify.Controllers
             new Company
             {
                 CompanyName= "Tesla Inc.",
-                StartDate = new DateOnly(2003, 7, 1),
+                StartDate = new DateTime(2003, 7, 1),
                 Employees = 127855,
                 Market = "Stock",
                 Industry = "Auto Manufacturing",
@@ -24,7 +24,7 @@ namespace Stockify.Controllers
             new Company
             {
                 CompanyName= "Amazon.com, Inc.",
-                StartDate = new DateOnly(1994, 7, 5),
+                StartDate = new DateTime(1994, 7, 5),
                 Employees = 1541000,
                 Market = "Stock",
                 Industry = "Specialty Distribution",
@@ -36,7 +36,7 @@ namespace Stockify.Controllers
             new Company
             {
                 CompanyName= "Apple Inc.",
-                StartDate = new DateOnly(1976, 4, 1),
+                StartDate = new DateTime(1976, 4, 1),
                 Employees = 164000,
                 Market = "Stock",
                 Industry = "Computer Manufacturing",
@@ -47,7 +47,7 @@ namespace Stockify.Controllers
             new Company
             {
                 CompanyName= "A.P. Møller - Mærsk A/Sc",
-                StartDate = new DateOnly(2013, 12, 20),
+                StartDate = new DateTime(2013, 12, 20),
                 Employees = 93000,
                 Market = "Stock",
                 Industry = "Freight Transport",

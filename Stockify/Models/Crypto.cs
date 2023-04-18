@@ -27,7 +27,7 @@ namespace Stockify.Models
 
         [Required(ErrorMessage = "Date Cannot be blank")]
         [Display(Name = "Date Created")]
-        public DateOnly DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
 
         [Display(Name = "Created By")]
         public string CreatedBy { get; set; }

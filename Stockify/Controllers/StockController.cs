@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Stockify.Data;
 using Stockify.Models;
+using System.Net;
 using static Stockify.Data.Enums.Category;
 using static Stockify.Models.Stock;
 
@@ -9,7 +11,13 @@ namespace Stockify.Controllers
 {
     public class StockController : Controller
     {
-        private static List<Stock> stockList = new List<Stock>()
+        private StockifyContext stockifyDB;
+        public StockController()
+        {
+            stockifyDB = new StockifyContext();
+            stockifyDB.Database.EnsureCreated();
+        }
+        /*private static List<Stock> stockList = new List<Stock>()
         {
             new Stock
             {
@@ -51,17 +59,17 @@ namespace Stockify.Controllers
                 EPS=10846.03,
                 Exchange="OMX"
             },
-        };
+        };*/
         // GET: StockController
         public ActionResult Stock()
         {
-            return View(stockList.OrderBy(s => s.Id).ToList());
+            return View(stockifyDB.Stocks.OrderBy(s => s.Id).ToList());
         }
 
         // GET: StockController/Details/5
         public ActionResult DetailsStock(string id)
         {
-            Stock found = stockList.FirstOrDefault(p => p.Id.Equals(id));
+            Stock found = stockifyDB.Stocks.FirstOrDefault(p => p.Id.Equals(id));
             if (found != null)
             {
                 return View(found);
@@ -85,7 +93,8 @@ namespace Stockify.Controllers
         {
             if (ModelState.IsValid)
             {
-                stockList.Add(newStock);
+                stockifyDB.Stocks.Add(newStock);
+                stockifyDB.SaveChanges();
                 return RedirectToAction("Stock");
             }
             else
@@ -97,8 +106,8 @@ namespace Stockify.Controllers
         // GET: StockController/Edit/5
         public ActionResult EditStock(string id)
         {
-            Stock found = stockList.FirstOrDefault(p => p.Id.Equals(id));
-            return View(found);
+            Stock stock = stockifyDB.Stocks.FirstOrDefault(p => p.Id.Equals(id));
+            return View(stock);
         }
 
         // POST: StockController/Edit/5
@@ -108,13 +117,13 @@ namespace Stockify.Controllers
         {
             try
             {
-                Stock editFx = stockList.FirstOrDefault(p => p.Id.Equals(id));
-                editFx.Name = stockCollection["Name"];
-                editFx.Price = int.Parse(stockCollection["Price"]);
-                editFx.MarketCap = int.Parse(stockCollection["MarketCap"]);
-                editFx.EPS = int.Parse(stockCollection["EPS"]);
-                editFx.Quantity = int.Parse(stockCollection["Quantity"]);
-
+                Stock stock = stockifyDB.Stocks.FirstOrDefault(p => p.Id.Equals(id));
+                stock.Name = stockCollection["Name"];
+                stock.Price = int.Parse(stockCollection["Price"]);
+                stock.MarketCap = int.Parse(stockCollection["MarketCap"]);
+                stock.EPS = int.Parse(stockCollection["EPS"]);
+                stock.Quantity = int.Parse(stockCollection["Quantity"]);
+                stockifyDB.SaveChanges();
                 return RedirectToAction("Stock");
             }
             catch
@@ -126,7 +135,7 @@ namespace Stockify.Controllers
         // GET: StockController/Delete/5
         public ActionResult DeleteStock(string id)
         {
-            var stock = stockList.Where(c => c.Id == id).FirstOrDefault();
+            var stock = stockifyDB.Stocks.Where(c => c.Id == id).FirstOrDefault();
             return View(stock);
         }
 
@@ -138,8 +147,8 @@ namespace Stockify.Controllers
             try
             {
 
-                var stock = stockList.Where(c => c.Id == Id).FirstOrDefault();
-                stockList.Remove(stock);
+                var stock = stockifyDB.Stocks.Where(c => c.Id == Id).FirstOrDefault();
+                stockifyDB.Stocks.Remove(stock);
                 return RedirectToAction("Stock");
 
             }
