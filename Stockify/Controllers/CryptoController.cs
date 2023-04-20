@@ -7,6 +7,8 @@ namespace Stockify.Controllers
 {
     public class CryptoController : Controller
     {
+
+
         private StockifyContext stockifyDB;
         public CryptoController()
         {
@@ -23,6 +25,8 @@ namespace Stockify.Controllers
         //    new Crypto{Id = "MAERSK-B.CO", Name="Litecoin", Prefix="LTC", MarketCap=293.9, Price=10.3, DateCreated=new DateTime(2001, 3, 27), CreatedBy="A.P. Møller - Mærsk A/Sc"}
 
         //};
+
+
 
         // GET: CryptoController
         public ActionResult Crypto()
