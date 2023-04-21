@@ -115,8 +115,9 @@ namespace Stockify.Controllers
             try
             {
 
-                var crypt = stockifyDB.Cryptos.Where(c => c.Id == Id).FirstOrDefault();
+                Crypto crypt = stockifyDB.Cryptos.Where(c => c.Id == Id).FirstOrDefault();
                 stockifyDB.Cryptos.Remove(crypt);
+                stockifyDB.SaveChanges();
                 return RedirectToAction("Crypto");
 
             }
