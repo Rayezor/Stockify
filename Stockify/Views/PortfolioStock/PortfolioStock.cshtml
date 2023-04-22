@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<Stockify.Models.PortfolioStock>
 
 @{
-    ViewData["Title"] = "PortfolioContents";
+    ViewData["Title"] = "PortfolioStock";
 }
 
-<h1>PortfolioContents</h1>
+<h1>PortfolioStock</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -22,7 +19,22 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarketCap)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exchange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EPS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PERatio)
             </th>
             <th></th>
         </tr>
@@ -40,12 +52,22 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarketCap)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.Exchange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EPS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PERatio)
             </td>
         </tr>
 }

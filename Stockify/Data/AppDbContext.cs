@@ -9,6 +9,10 @@ namespace Stockify.Data
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Crypto> Cryptos { get; set; }
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PortfolioStock>();
+        }*/
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(StockifyConnectionString);

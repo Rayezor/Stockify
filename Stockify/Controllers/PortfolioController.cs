@@ -21,10 +21,6 @@ namespace Stockify.Controllers
             ViewBag.TotalPrice = portfolio.CalculateTotalPrice();
             return View(stockifyDB.Stocks);
         }
-        public ActionResult PortfolioContents()
-        {
-            return View();
-        }
         public ActionResult AddToPortfolio(string id)
         {
             try
@@ -47,7 +43,11 @@ namespace Stockify.Controllers
         }
         public ActionResult GoToStocks()
         {
-            return RedirectToAction("Stock");
+            return RedirectToAction("Stock","Stock");
         }
+        /*public ActionResult GoToPortfolio()
+        {
+            return RedirectToAction("PortfolioStock", "PortfolioStock");
+        }*/
     }
 }

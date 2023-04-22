@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static Stockify.Data.Enums.Category;
 
 namespace Stockify.Models
@@ -30,15 +31,22 @@ namespace Stockify.Models
                 return Math.Round(peRatio, 2);
             }
         }
-        /*public Stock(String _id, String _name, Categories _category, double _marketcap, double _price, String _exchange, double _eps, double _peRatio)
+        /*public Stock(string id, string name, double price, double marketCap, Categories category, string exchange, double ePS, double pERatio)
         {
-            Id = _id;
-            Name = _name;
-            Category = _category;
-            MarketCap = _marketcap;
-            Price = _price;
-            Exchange = _exchange;
-            EPS = _eps;
+            Id = id;
+            Name = name;
+            Price = price;
+            MarketCap = marketCap;
+            Exchange = exchange;
+            Category = category;
+            EPS = ePS;
         }*/
+
+        //Relationships
+
+        /*//Company
+        public string CompanyId { get; set; }
+        [ForeignKey("CompanyId")]
+        public Company Company { get; set; }   */
     }
 }
