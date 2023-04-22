@@ -122,7 +122,6 @@ namespace Stockify.Controllers
                 stock.Price = int.Parse(stockCollection["Price"]);
                 stock.MarketCap = int.Parse(stockCollection["MarketCap"]);
                 stock.EPS = int.Parse(stockCollection["EPS"]);
-                stock.Quantity = int.Parse(stockCollection["Quantity"]);
                 stockifyDB.SaveChanges();
                 return RedirectToAction("Stock");
             }
@@ -149,6 +148,7 @@ namespace Stockify.Controllers
 
                 var stock = stockifyDB.Stocks.Where(c => c.Id == Id).FirstOrDefault();
                 stockifyDB.Stocks.Remove(stock);
+                stockifyDB.SaveChanges();
                 return RedirectToAction("Stock");
 
             }
@@ -157,6 +157,11 @@ namespace Stockify.Controllers
             {
                 return View(Id);
             }
+        }
+
+        public ActionResult CreatePortfolio()
+        {
+            return RedirectToAction("Portfolio", "Portfolio");
         }
     }
 }

@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<Stockify.Models.Stock>
 
 @{
-    ViewData["Title"] = "Stock";
+    ViewData["Title"] = "Portfolio";
 }
 
-<h1>Stock</h1>
+<h1>Portfolio</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -26,6 +23,15 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exchange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EPS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PERatio)
             </th>
             <th></th>
         </tr>
@@ -49,13 +55,21 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditStock", new {id=item.Id}) |
-                @Html.ActionLink("Details", "DetailsStock", new {id=item.Id}) |
-                @Html.ActionLink("Delete", "DeleteStock", new {id=item.Id})
+                @Html.DisplayFor(modelItem => item.Exchange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EPS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PERatio)
+            </td>
+            <td>
+                @Html.ActionLink("Add to portfolio", "AddToPortfolio", new { id =item.Id })
             </td>
         </tr>
 }
     </tbody>
 </table>
 
-<h5>@Html.ActionLink("Create Portfolio", "CreatePortfolio") </h5>
+<h3> Total price of portfolio: € @ViewBag.TotalPrice</h3>
+<h5>@Html.ActionLink("Go to Portfolio", "PortfolioContents") </h5>

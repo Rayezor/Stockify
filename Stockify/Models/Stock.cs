@@ -30,15 +30,15 @@ namespace Stockify.Models
                 return Math.Round(peRatio, 2);
             }
         }
-        public double Quantity { get; set; }
-        [Display(Name = "All stock value")]
-        public double TotalStockValue
+        /*public Stock(String _id, String _name, Categories _category, double _marketcap, double _price, String _exchange, double _eps, double _peRatio)
         {
-            get
-            {
-                double totalStockValue = Price*Quantity;
-                return Math.Round(totalStockValue, 2);
-            }
-        }
+            Id = _id;
+            Name = _name;
+            Category = _category;
+            MarketCap = _marketcap;
+            Price = _price;
+            Exchange = _exchange;
+            EPS = _eps;
+        }*/
     }
 }

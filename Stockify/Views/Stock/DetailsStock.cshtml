@@ -58,21 +58,9 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PERatio)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalStockValue)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalStockValue)
-        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="EditStock" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Stock">Back to List</a>
 </div>
