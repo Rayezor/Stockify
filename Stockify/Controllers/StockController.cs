@@ -63,7 +63,8 @@ namespace Stockify.Controllers
         // GET: StockController
         public ActionResult Stock()
         {
-            return View(stockifyDB.Stocks.OrderBy(s => s.Id).ToList());
+            var allStocks = stockifyDB.Stocks.Include(n => n.Company).ToList();
+            return View(allStocks);
         }
 
         // GET: StockController/Details/5
@@ -158,7 +159,6 @@ namespace Stockify.Controllers
                 return View(Id);
             }
         }
-
         public ActionResult CreatePortfolio()
         {
             return RedirectToAction("Portfolio", "Portfolio");

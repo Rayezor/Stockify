@@ -28,9 +28,12 @@ namespace Stockify.Models
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Headquarters Location")]
-        public string Headquarters { get; set; } 
+        public string Headquarters { get; set; }
 
-
+        //Relationship
+        public string StockId { get; set; }
+        [ForeignKey("StockId")]
+        public virtual Stock Stock { get; set; }
 
 
 

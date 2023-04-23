@@ -65,7 +65,10 @@
                     @Html.DisplayFor(modelItem => item.PERatio)
                 </td>
                 <td>
-                    @Html.ActionLink("Add to portfolio", "AddToPortfolio", new { id =item.Id })
+                    <p>
+                        <a class="btn btn-outline-primary" asp-action="AddToPortfolio" asp-route-id="@item.Id">Add to portfolio</a>
+                    </p>
+                    @*@Html.ActionLink("Add to portfolio", "AddToPortfolio", new { id =item.Id })*@
                 </td>
             </tr>
         }
@@ -73,7 +76,10 @@
 </table>
 
 <h3> Total price of portfolio: € @ViewBag.TotalPrice</h3>
-<h5>@Html.ActionLink("Go to Stocks", "GoToStocks") </h5>
+<p>
+    <a class="btn btn-outline-info" asp-action="GoToStocks">Show Stocks</a>
+</p>
+@*<h5>@Html.ActionLink("Go to Stocks", "GoToStocks") </h5>*@
 @*<h5>@Html.ActionLink("Go to Portfolio", "GoToPortfolio") </h5>*@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

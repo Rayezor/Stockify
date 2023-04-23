@@ -7,7 +7,7 @@
 <h1>Stock</h1>
 
 <p>
-    <a asp-action="CreateStock">Create New</a>
+    <a class="btn btn-outline-success" asp-action="CreateStock">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -26,6 +26,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyId)
             </th>
             <th></th>
         </tr>
@@ -49,13 +52,22 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditStock", new {id=item.Id}) |
+                <b>Company Employees: </b>@item.Company.Employees
+             </td>
+            <td>
+                <a class="btn btn-outline-primary" asp-action="EditStock" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a> |
+                <a class="bn btn-outline-info" asp-action="DetailsStock" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details</a> |
+                <a class="btn btn-danger" asp-action="DeleteStock" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
+                @*@Html.ActionLink("Edit", "EditStock", new {id=item.Id}) |
                 @Html.ActionLink("Details", "DetailsStock", new {id=item.Id}) |
-                @Html.ActionLink("Delete", "DeleteStock", new {id=item.Id})
+                @Html.ActionLink("Delete", "DeleteStock", new {id=item.Id})*@
             </td>
         </tr>
 }
     </tbody>
 </table>
 
-<h5>@Html.ActionLink("Create Portfolio", "CreatePortfolio") </h5>
+<p>
+    <a class="btn btn-outline-success" asp-action="CreatePortfolio">Create Portfolio</a>
+</p>
+@*<h5>@Html.ActionLink("Create Portfolio", "CreatePortfolio") </h5>*@

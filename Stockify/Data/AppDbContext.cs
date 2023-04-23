@@ -11,7 +11,8 @@ namespace Stockify.Data
         public DbSet<Crypto> Cryptos { get; set; }
         /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PortfolioStock>();
+            base.OnModelCreating(modelBuilder);
+
         }*/
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
