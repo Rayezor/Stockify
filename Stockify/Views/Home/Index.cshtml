@@ -2,7 +2,47 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="Images" href="~/Images/stock2.jpg" asp-append-version="true" />
+
+<style>
+    .Container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+    }
+
+    h1 {
+        padding-bottom: 3%;
+        text-align: center;
+        -webkit-text-stroke-width: 0.5px;
+        -webkit-text-stroke-color: black;
+        font-size: 80px;
+    }
+
+    p{
+        position: absolute;
+        top: 50%;
+        left: 65%;
+        color: yellow;
+        text-align: center;
+
+        
+    }
+
+
+
+
+
+</style>
+
+
+<h1 class="display-4">Welcome to Stockify</h1>
+
+<div class="Container">
+    <img src="~/Images/stock2.jpg" style="width:100%;" />
+    <p> Check out the latest stats here at Stockify!!! </p>
+   
+    
 </div>

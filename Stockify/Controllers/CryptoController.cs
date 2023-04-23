@@ -35,11 +35,13 @@ namespace Stockify.Controllers
         }
 
         // GET: CryptoController/Details
-        public ActionResult Details(string id)
+        public ActionResult CryptoDetails(string id)
         {
             Crypto found = stockifyDB.Cryptos.FirstOrDefault(p => p.Id.Equals(id));
             if (found != null)
             {
+                // Use Viewbag to generate list of all companies
+                ViewBag.Complist = stockifyDB.Companies.ToList();
                 return View(found);
             }
             else
