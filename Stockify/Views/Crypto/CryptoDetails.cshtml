@@ -74,14 +74,19 @@
 
 @{
 
+    //Use Viewbag to get Current crypto and list of all Companies
+    //Translate Viewbags to list and string
+    //Loop through company list if company name = crypto created by field
+    //add button which navaigates to that companies details page 
+    // else dont print anything and continue the loop until loop has finished
 
-    string currentstring = ViewBag.Current;
-    List<Company> companydblist = ViewBag.Complist;
+    string CurrentCryptoCreatedBy = ViewBag.CurrentCrypto;
+    List<Company>companydblist = ViewBag.Companylist;
 
     foreach (var company in companydblist)
     {
 
-        if (company.CompanyName == currentstring)
+        if (company.CompanyName == CurrentCryptoCreatedBy)
         {
             <div1>
                 <h1> </h1>
@@ -93,8 +98,6 @@
         {
             continue;
         }
-
-        
 
     }
  }

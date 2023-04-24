@@ -41,8 +41,8 @@ namespace Stockify.Controllers
             if (found != null)
             {
                 // Use Viewbag to generate list of all companies
-                ViewBag.Complist = stockifyDB.Companies.ToList();
-                ViewBag.Current = found.CreatedBy;
+                ViewBag.Companylist = stockifyDB.Companies.ToList();
+                ViewBag.CurrentCrypto = found.CreatedBy;
                 return View(found);
             }
             else
