@@ -29,9 +29,19 @@ namespace Stockify.Controllers
 
 
         // GET: CryptoController
-        public ActionResult Crypto()
+        /*public ActionResult Crypto()
         {
             return View(stockifyDB.Cryptos.OrderBy(s => s.Id).ToList());
+        }*/
+        public ActionResult Crypto(string searchString)
+        {
+            var allCryptos = from s in stockifyDB.Cryptos
+                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                allCryptos = allCryptos.Where(s => s.Name.Contains(searchString));
+            }
+            return View(allCryptos);
         }
 
         // GET: CryptoController/Details
