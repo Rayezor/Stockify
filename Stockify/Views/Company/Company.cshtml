@@ -21,11 +21,11 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.CompanyName)
-                @Html.ActionLink("Company Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+               @* @Html.ActionLink("Company Name", "Index", new { sortOrder = ViewBag.NameSortParm })*@
             </th>
-            <th>
-                @Html.ActionLink("Start Date", "Index", new { sortOrder = ViewBag.DateSortParm })
-            </th>
+           @* <th>*@
+               @* @Html.ActionLink("Start Date", "Index", new { sortOrder = ViewBag.DateSortParm })*@
+            @*</th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Employees)
             </th>
@@ -74,7 +74,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new {  id=item.CompanyName }) |
                 @Html.ActionLink("Details", "Details", new {  id=item.CompanyName}) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.CompanyName })
+                @Html.ActionLink("Delete", "DeleteCompany", new {  id=item.CompanyName })
             </td>
         </tr>
 }

@@ -74,10 +74,10 @@ namespace Stockify.Controllers
 
 
         // GET: CompanyController
-        public ActionResult Company(string sortOrder, string searchString)
+        public ActionResult Company(/*string sortOrder,*/ string searchString)
         {
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+           // ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var companies = from s in stockifyDB.Companies
                             select s;
             if (!String.IsNullOrEmpty(searchString))
@@ -85,22 +85,22 @@ namespace Stockify.Controllers
                 companies = companies.Where(s => s.CompanyName.Contains(searchString)
                                        /*|| s.FirstMidName.Contains(searchString)*/);
             }
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    companies = companies.OrderByDescending(s => s.CompanyName);
-                    break;
-                case "Date":
-                    companies = companies.OrderBy(s => s.StartDate);
-                    break;
-                case "date_desc":
-                    companies = companies.OrderByDescending(s => s.StartDate);
-                    break;
-                default:
-                    companies = companies.OrderBy(s => s.CompanyName);
-                    break;
-            }
-            return View(stockifyDB.Companies.OrderBy(p => p.CompanyName).ToList());
+            //switch (sortOrder)
+            //{
+            //    case "name_desc":
+            //        companies = companies.OrderByDescending(s => s.CompanyName);
+            //        break;
+            //    case "Date":
+            //        companies = companies.OrderBy(s => s.StartDate);
+            //        break;
+            //    case "date_desc":
+            //        companies = companies.OrderByDescending(s => s.StartDate);
+            //        break;
+            //    default:
+            //        companies = companies.OrderBy(s => s.CompanyName);
+            //        break;
+            //}
+            return View(companies);
         }
 
         // GET: CompanyController/Details/5
@@ -160,7 +160,6 @@ namespace Stockify.Controllers
             try
             {
                 Company company = stockifyDB.Companies.FirstOrDefault(p => p.CompanyName.Equals(id));
-                company.StartDate = DateTime.Parse(collection["StartDate"]);
                 company.Employees = int.Parse(collection["Employees"]);
                 company.Market = collection["Market"];
                 company.Industry =collection["Industry"];
@@ -178,21 +177,23 @@ namespace Stockify.Controllers
 
 
         // GET: CompanyController/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult DeleteCompany(string id)
         {
-            Company found = stockifyDB.Companies.FirstOrDefault(p => p.CompanyName.ToLower().Equals(id.ToLower()));
-            return View(found);
+            Company company = stockifyDB.Companies.FirstOrDefault(p => p.CompanyName.Contains(id));
+            return View(company);
         }
 
         // POST: StockController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, Company collection)
+        public ActionResult DeleteCompany(string id, IFormCollection companycollection)
         {
             try
             {
-                Company found = stockifyDB.Companies.FirstOrDefault(p => p.CompanyName.ToLower().Equals(id.ToLower()));
-                stockifyDB.Companies.Remove(found);
+                Company company = stockifyDB.Companies.FirstOrDefault(p => p.CompanyName.Contains(id));
+                stockifyDB.Companies.Remove(company);
+                stockifyDB.SaveChanges();
+                
                 return RedirectToAction("Company");
             }
             catch
