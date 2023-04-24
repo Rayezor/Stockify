@@ -1,13 +1,13 @@
 ﻿@model Stockify.Models.Company
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Company Details";
 }
 
-<h1>Details</h1>
+<h1>Company Details</h1>
 
 <div>
-    <h4>Company</h4>
+    <h4>@Html.DisplayFor(model => model.CompanyName) Company Details</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">

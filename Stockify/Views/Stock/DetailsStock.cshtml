@@ -1,13 +1,13 @@
 ﻿@model Stockify.Models.Stock
 
 @{
-    ViewData["Title"] = "Details Stock";
+    ViewData["Title"] = "Stock Details";
 }
 
-<h1>Details Stock</h1>
+<h1>Stock Details</h1>
 
 <div>
-    <h4>Stock</h4>
+    <h4>@Html.DisplayFor(model => model.Name) Stock</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -71,3 +71,38 @@
 @*    <a asp-action="EditStock" asp-route-id="@Model?.Id">Edit</a> |*@
     <a class="btn btn-outline-info" asp-action="Stock">Back to List</a>
 </div>
+
+<style>
+
+    div1 {
+        padding: 50px;
+    }
+
+</style>
+
+
+
+
+@{
+    string CurrentStockName = ViewBag.CurrentStock;
+    List<Company> companydblist = ViewBag.Companylist;
+
+    foreach (var company in companydblist)
+    {
+
+        if (company.CompanyName == CurrentStockName)
+        {
+            <div1>
+            <h1></h1>
+                <a href="../../Company/Details/@Html.DisplayFor(model => model.Name)"> <input type="submit" value="@Html.DisplayFor(model => model.Name) Company Details" class="btn btn-success" />  </a>
+            </div1>
+        }
+        else
+        {
+            continue;
+        }
+
+    }
+}
+
+

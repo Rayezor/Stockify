@@ -79,11 +79,27 @@ namespace Stockify.Controllers
         }
 
         // GET: StockController/Details/5
+        /*public ActionResult DetailsStock(string id)
+        {
+            Stock found = stockifyDB.Stocks.FirstOrDefault(p => p.Id.Equals(id));
+            if (found != null)
+            {
+                return View(found);
+            }
+            else
+            {
+                return RedirectToAction("Stock");
+            }
+        }*/
+
         public ActionResult DetailsStock(string id)
         {
             Stock found = stockifyDB.Stocks.FirstOrDefault(p => p.Id.Equals(id));
             if (found != null)
             {
+                // Use Viewbag to generate list of all companies
+                ViewBag.Companylist = stockifyDB.Companies.ToList();
+                ViewBag.CurrentStock = found.Name;
                 return View(found);
             }
             else
