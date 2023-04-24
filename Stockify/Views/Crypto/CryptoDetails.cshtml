@@ -12,6 +12,12 @@
     <h4>Crypto</h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -70,14 +76,15 @@ loop through list if company name equals name of crypto created by
 redirect the HTML button to the company details page*@
 
 @{
-    var x = @Html.DisplayFor(model => model.CreatedBy);
-    var currentstring = "";
-    using (var writer = new System.IO.StringWriter())
-    {
-        x.WriteTo(writer, System.Text.Encodings.Web.HtmlEncoder.Default);
-        currentstring = writer.ToString();
-    }
+    //var x = @Html.DisplayFor(model => model.CreatedBy);
+    //var currentstring = "";
+    //using (var writer = new System.IO.StringWriter())
+    //{
+    //    x.WriteTo(writer, System.Text.Encodings.Web.HtmlEncoder.Default);
+    //    currentstring = writer.ToString();
+    //}
 
+    string currentstring = ViewBag.Current;
     List<Company> companydblist = ViewBag.Complist;
 
 

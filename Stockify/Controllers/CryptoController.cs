@@ -42,6 +42,7 @@ namespace Stockify.Controllers
             {
                 // Use Viewbag to generate list of all companies
                 ViewBag.Complist = stockifyDB.Companies.ToList();
+                ViewBag.Current = found.CreatedBy;
                 return View(found);
             }
             else
@@ -55,7 +56,7 @@ namespace Stockify.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                newcrypto.DateCreated = DateTime.Today;
                 stockifyDB.Cryptos.Add(newcrypto);
                 stockifyDB.SaveChanges();
                 return RedirectToAction("Crypto");

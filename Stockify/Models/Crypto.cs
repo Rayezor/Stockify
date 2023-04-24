@@ -29,6 +29,7 @@ namespace Stockify.Models
         [Display(Name = "Date Created")]
         public DateTime DateCreated { get; set; }
 
+
         [Display(Name = "Created By")]
         public string CreatedBy { get; set; }
 
