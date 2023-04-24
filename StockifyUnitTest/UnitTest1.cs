@@ -1,29 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.Host.Mef;
-using Xunit;
 using Stockify.Controllers;
 using Stockify.Models;
 
-namespace StockifyTest.Controllers
-
+namespace StockifyUnitTest
 {
-    [TestClass]
-    public class StockControllerTests
+    public class UnitTest1
     {
-        [TestMethod]
+        [Fact]
         public void Test_Stock_ReturnsViewName()
         {
             var controller = new StockController();
             var result = controller.Stock() as ViewResult;
-            Assert.AreEqual("Stock", result?.ViewName);
+            Assert.Equal("Stock", result?.ViewName);
         }
-        /*[TestMethod]
+        [Fact]
         public void Test_Stock_ReturnsViewData()
         {
             var controller = new StockController();
             var result = controller.Stock() as ViewResult;
-            var stock = (List<Stock>?)result?.ViewData.Model;
-            Assert.IsNull(stock);
-        }*/
+            var stock = (Stock?)result?.ViewData.Model;
+            Assert.Null(stock);
+
+        }
     }
 }

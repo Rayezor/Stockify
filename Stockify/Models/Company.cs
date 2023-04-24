@@ -31,9 +31,9 @@ namespace Stockify.Models
         public string Headquarters { get; set; }
 
         //Relationship
-        public string StockId { get; set; }
+        /*public string StockId { get; set; }
         [ForeignKey("StockId")]
-        public virtual Stock Stock { get; set; }
+        public virtual Stock Stock { get; set; }*/
 
 
 

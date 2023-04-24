@@ -61,9 +61,20 @@ namespace Stockify.Controllers
             },
         };*/
         // GET: StockController
-        public ActionResult Stock()
+/*        public ActionResult Stock()
         {
-            var allStocks = stockifyDB.Stocks.Include(n => n.Company).ToList();
+            *//*throw new NotImplementedException();*//*
+            var allStocks = stockifyDB.Stocks*//*Include(n => n.Company)*//*.ToList();
+            return View(allStocks);
+        }*/
+        public ActionResult Stock(string searchString)
+        {
+            var allStocks = from s in stockifyDB.Stocks
+                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                allStocks = allStocks.Where(s => s.Name.Contains(searchString));
+            }
             return View(allStocks);
         }
 

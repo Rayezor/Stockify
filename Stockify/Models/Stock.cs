@@ -34,20 +34,20 @@ namespace Stockify.Models
             }
 }
         /*public Stock(string id, string name, double price, double marketCap, Categories category, string exchange, double ePS, double peRatio)
-                {
-                    this.Id = id;
-                    Name = name;
-                    Price = price;
-                    MarketCap = marketCap;
-                    Exchange = exchange;
-                    Category = category;
-                    EPS = ePS;
-                    PERatio = peRatio;
-                }*/
+        {
+            this.Id = id;
+            Name = name;
+            Price = price;
+            MarketCap = marketCap;
+            Exchange = exchange;
+            Category = category;
+            EPS = ePS;
+            PERatio = peRatio;
+        }*/
 
         //Relationships
-        public string CompanyId { get; set; }
+        /*public string CompanyId { get; set; }
         [ForeignKey("CompanyId")]
-        public virtual Company Company { get; set; }
+        public virtual Company Company { get; set; }*/
     }
 }

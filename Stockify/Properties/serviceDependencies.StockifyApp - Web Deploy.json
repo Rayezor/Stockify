@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "mssql2": {
+    "mssql1": {
       "secretStore": "AzureAppSettings",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/stockifydbserver/databases/Stockify_db",
       "type": "mssql.azure",
-      "connectionId": "ConnectionString",
+      "connectionId": "StockifyConnectionString",
       "dynamicId": null
     }
   }

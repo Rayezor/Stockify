@@ -17,21 +17,8 @@ namespace StockifyTest.Models
                 MarketCap = 212.814,
                 Price = 11470.00,
                 EPS = 10846.03,
-                Exchange = "OMX"
-            };
-        }
-        [TestMethod]
-        public void StockWithInvalidId()
-        {
-            Stock stock = new Stock
-            {
-                Id = "MAERSK-B.CO",
-                Name = "A.P. Møller - Mærsk A/S",
-                Category = Categories.Industrials,
-                MarketCap = -212.814,
-                Price = 11470.00,
-                EPS = 10846.03,
-                Exchange = "OMX"
+                Exchange = "OMX",
+                CompanyId = "Maersk"
             };
         }
     }

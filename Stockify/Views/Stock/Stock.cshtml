@@ -9,6 +9,13 @@
 <p>
     <a class="btn btn-outline-success" asp-action="CreateStock">Create New</a>
 </p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -27,9 +34,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
+@*            <th>
                 @Html.DisplayNameFor(model => model.CompanyId)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -51,9 +58,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-            <td>
+            @*<td>
                 <b>Company Employees: </b>@item.Company.Employees
-             </td>
+             </td>*@
             <td>
                 <a class="btn btn-outline-primary" asp-action="EditStock" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a> |
                 <a class="bn btn-outline-info" asp-action="DetailsStock" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details</a> |
