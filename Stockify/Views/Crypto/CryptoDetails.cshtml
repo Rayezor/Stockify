@@ -70,24 +70,13 @@
 </style>
 
 
-@*Convert HTML.Displayfor (created by field of crypto) using string writer and html encoder
-use list to convert viewbag info to list
-loop through list if company name equals name of crypto created by
-redirect the HTML button to the company details page*@
+
 
 @{
-    //var x = @Html.DisplayFor(model => model.CreatedBy);
-    //var currentstring = "";
-    //using (var writer = new System.IO.StringWriter())
-    //{
-    //    x.WriteTo(writer, System.Text.Encodings.Web.HtmlEncoder.Default);
-    //    currentstring = writer.ToString();
-    //}
+
 
     string currentstring = ViewBag.Current;
     List<Company> companydblist = ViewBag.Complist;
-
-
 
     foreach (var company in companydblist)
     {

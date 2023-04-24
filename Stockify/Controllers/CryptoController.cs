@@ -56,7 +56,9 @@ namespace Stockify.Controllers
         {
             if (ModelState.IsValid)
             {
-                newcrypto.DateCreated = DateTime.Today;
+
+                // set date and time to when created and hide from page view 
+                newcrypto.DateCreated = DateTime.Now;
                 stockifyDB.Cryptos.Add(newcrypto);
                 stockifyDB.SaveChanges();
                 return RedirectToAction("Crypto");
