@@ -3,13 +3,13 @@
 @model Stockify.Models.Crypto
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Crypto Details";
 }
 
-<h1>Details</h1>
+<h1>Crypto Details</h1>
 
 <div>
-    <h4>Crypto</h4>
+    <h4>@Html.DisplayFor(model => model.Name)</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">

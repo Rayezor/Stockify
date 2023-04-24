@@ -72,9 +72,9 @@
                 @Html.DisplayFor(modelItem => item.Headquarters)
             </td>
             <td>
-                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.CompanyName"><i class="bi bi-pencil-square"></i>Edit</a> |
-                    <a class="bn btn-outline-info" asp-action="Details" asp-route-id="@item.CompanyName"><i class="bi bi-eye"></i>Details</a> |
-                    <a class="btn btn-danger" asp-action="DeleteStock" asp-route-id="@item.CompanyName"><i class="bi bi-trash"></i>Delete</a>
+                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.CompanyName"><i class="bi bi-pencil-square"></i>Edit</a> |
+                <a class="bn btn-outline-info" asp-action="Details" asp-route-id="@item.CompanyName"><i class="bi bi-eye"></i>Details</a> |
+                <a class="btn btn-danger" asp-action="DeleteStock" asp-route-id="@item.CompanyName"><i class="bi bi-trash"></i>Delete</a>
              @*   @Html.ActionLink("Edit", "Edit", new {  id=item.CompanyName }) |
                 @Html.ActionLink("Details", "Details", new {  id=item.CompanyName}) |
                 @Html.ActionLink("Delete", "DeleteCompany", new {  id=item.CompanyName })*@
@@ -82,4 +82,7 @@
         </tr>
 }
     </tbody>
+
+
 </table>
+<label>Total Companies:</label>  @ViewBag.Amount
