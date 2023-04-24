@@ -76,7 +76,9 @@ namespace Stockify.Controllers
         // GET: CompanyController
         public ActionResult Company(/*string sortOrder,*/ string searchString)
         {
-           // ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            
+            ViewBag.Amount = stockifyDB.Companies.Count().ToString();
+            // ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var companies = from s in stockifyDB.Companies
                             select s;
@@ -85,6 +87,7 @@ namespace Stockify.Controllers
                 companies = companies.Where(s => s.CompanyName.Contains(searchString)
                                        /*|| s.FirstMidName.Contains(searchString)*/);
             }
+
             //switch (sortOrder)
             //{
             //    case "name_desc":
