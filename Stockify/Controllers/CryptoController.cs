@@ -100,8 +100,8 @@ namespace Stockify.Controllers
                 Crypto editcyrpto = stockifyDB.Cryptos.FirstOrDefault(p => p.Id.Equals(Id));
                 editcyrpto.Name = cyyptocollection["Name"];
                 editcyrpto.Prefix = cyyptocollection["Prefix"];
-                editcyrpto.MarketCap = int.Parse(cyyptocollection["MarketCap"]);
-                editcyrpto.Price = int.Parse(cyyptocollection["Price"]);
+                editcyrpto.MarketCap = double.Parse(cyyptocollection["MarketCap"]);
+                editcyrpto.Price = double.Parse(cyyptocollection["Price"]);
                 editcyrpto.CreatedBy = cyyptocollection["CreatedBy"];
                 stockifyDB.SaveChanges(); 
                 return RedirectToAction("Crypto");

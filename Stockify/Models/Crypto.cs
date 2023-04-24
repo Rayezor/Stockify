@@ -19,10 +19,12 @@ namespace Stockify.Models
         public string Prefix { get; set; }
 
         [Display(Name = "Market Cap(in Billions)")]
+        [Range(0, double.MaxValue)]
         public double MarketCap { get; set; }
 
         [Required(ErrorMessage = "Price Cannot be blank")]
         [Display(Name = "Price in €")]
+        [Range(0, double.MaxValue)]
         public double Price { get; set; }
 
         [Required(ErrorMessage = "Date Cannot be blank")]

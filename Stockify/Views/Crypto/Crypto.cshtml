@@ -7,7 +7,7 @@
 <h1>Crypto</h1>
 
 <p>
-    <a asp-action="CreateCrypto">Create New</a>
+    <a class="btn btn-outline-success" asp-action="CreateStock">Create New</a>
 </p>
 @using (Html.BeginForm())
 {
@@ -66,9 +66,13 @@
                     @Html.DisplayFor(modelItem => item.CreatedBy)
                 </td>*@
                 <td>
-                    @Html.ActionLink("Edit", "EditCrypto", new {id=item.Id}) |
+
+                        <a class="btn btn-outline-primary" asp-action="EditCrypto" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a> |
+                        <a class="bn btn-outline-info" asp-action="CryptoDetails" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details</a> |
+                        <a class="btn btn-danger" asp-action="DeleteCrypto" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
+@*                    @Html.ActionLink("Edit", "EditCrypto", new {id=item.Id}) |
                     @Html.ActionLink("Details", "CryptoDetails", new {id=item.Id}) |
-                    @Html.ActionLink("Delete", "DeleteCrypto", new {  id=item.Id })
+                    @Html.ActionLink("Delete", "DeleteCrypto", new {  id=item.Id })*@
                 </td>
             </tr>
     }
