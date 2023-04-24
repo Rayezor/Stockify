@@ -148,7 +148,7 @@ namespace Stockify.Controllers
         // GET: CompanyController/Edit/5
         public ActionResult Edit(string id)
         {
-            Company found = stockifyDB.Companies.FirstOrDefault(p => p.CompanyName.ToLower().Equals(id.ToLower()));
+            var found = stockifyDB.Companies.Where(c => c.CompanyName == id).FirstOrDefault();
             return View(found);
         }
 
