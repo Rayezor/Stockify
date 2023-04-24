@@ -9,7 +9,13 @@
 <p>
     <a asp-action="CreateCrypto">Create New</a>
 </p>
-
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
 
 
 <div class="Container"> 
