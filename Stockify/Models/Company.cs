@@ -7,6 +7,10 @@ namespace Stockify.Models
     {
 
         [Key]
+        [Required(ErrorMessage = "ID Cannot be blank")]
+        [Display(Name = "ID")]
+        public string Id { get; set; }
+
         [Required(ErrorMessage = "Company Cannot be blank")]
         [Display(Name = "Company Name")]
         public string CompanyName { get; set; }

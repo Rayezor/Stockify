@@ -109,7 +109,7 @@ namespace Stockify.Controllers
         // GET: CompanyController/Details/5
         public ActionResult Details(string id)
         {
-            Company found = stockifyDB.Companies.FirstOrDefault(p => p.CompanyName.ToLower().Equals(id.ToLower()));
+            Company found = stockifyDB.Companies.FirstOrDefault(p => p.Id == id);
             if (found != null)
             {
                 return View(found);
@@ -151,7 +151,7 @@ namespace Stockify.Controllers
         // GET: CompanyController/Edit/5
         public ActionResult Edit(string id)
         {
-            var found = stockifyDB.Companies.Where(c => c.CompanyName == id).FirstOrDefault();
+            var found = stockifyDB.Companies.Where(c => c.Id == id).FirstOrDefault();
             return View(found);
         }
 
@@ -162,12 +162,13 @@ namespace Stockify.Controllers
         {
             try
             {
-                Company company = stockifyDB.Companies.FirstOrDefault(p => p.CompanyName.Equals(id));
+                Company company = stockifyDB.Companies.FirstOrDefault(p => p.Id == id);
+                company.CompanyName = collection["CompanyName"];
                 company.Employees = int.Parse(collection["Employees"]);
                 company.Market = collection["Market"];
                 company.Industry =collection["Industry"];
                 company.Address = collection["Address"];
-                company.PhoneNumber = collection["PhoneNUmber"];
+                company.PhoneNumber = collection["PhoneNumber"];
                 company.Headquarters = collection["Headquarters"];
                 stockifyDB.SaveChanges();
                 return RedirectToAction("Company");
@@ -182,7 +183,7 @@ namespace Stockify.Controllers
         // GET: CompanyController/Delete/5
         public ActionResult DeleteCompany(string id)
         {
-            Company company = stockifyDB.Companies.FirstOrDefault(p => p.CompanyName.Contains(id));
+            var company = stockifyDB.Companies.Where(c => c.Id == id).FirstOrDefault();
             return View(company);
         }
 
@@ -193,7 +194,7 @@ namespace Stockify.Controllers
         {
             try
             {
-                Company company = stockifyDB.Companies.FirstOrDefault(p => p.CompanyName.Contains(id));
+                var company = stockifyDB.Companies.Where(c => c.Id == id).FirstOrDefault();
                 stockifyDB.Companies.Remove(company);
                 stockifyDB.SaveChanges();
                 
