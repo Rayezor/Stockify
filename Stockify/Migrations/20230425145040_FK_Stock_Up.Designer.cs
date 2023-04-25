@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stockify.Data;
 
@@ -11,9 +12,11 @@ using Stockify.Data;
 namespace Stockify.Migrations
 {
     [DbContext(typeof(StockifyContext))]
-    partial class StockifyContextModelSnapshot : ModelSnapshot
+    [Migration("20230425145040_FK_Stock_Up")]
+    partial class FK_Stock_Up
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
