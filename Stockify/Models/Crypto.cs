@@ -32,10 +32,13 @@ namespace Stockify.Models
         [Display(Name = "Date Created")]
         public DateTime DateCreated { get; set; }
 
-        // Foreign key 
+       
         [Display(Name = "Created By")]
         public string CreatedBy { get; set; }
 
+
+        // Foreign key 
+        public string CompanyId { get; set; }
         [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
 
