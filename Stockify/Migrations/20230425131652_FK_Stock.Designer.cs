@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stockify.Data;
 
@@ -11,9 +12,11 @@ using Stockify.Data;
 namespace Stockify.Migrations
 {
     [DbContext(typeof(StockifyContext))]
-    partial class StockifyContextModelSnapshot : ModelSnapshot
+    [Migration("20230425131652_FK_Stock")]
+    partial class FK_Stock
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,6 +99,9 @@ namespace Stockify.Migrations
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<double>("EPS")
                         .HasColumnType("float");
 
@@ -114,7 +120,18 @@ namespace Stockify.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CompanyId");
+
                     b.ToTable("Stocks");
+                });
+
+            modelBuilder.Entity("Stockify.Models.Stock", b =>
+                {
+                    b.HasOne("Stockify.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+
+                    b.Navigation("Company");
                 });
 #pragma warning restore 612, 618
         }

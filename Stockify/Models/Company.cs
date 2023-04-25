@@ -34,10 +34,14 @@ namespace Stockify.Models
         [Display(Name = "Headquarters Location")]
         public string Headquarters { get; set; }
 
-        //Relationship
-        /*public string StockId { get; set; }
-        [ForeignKey("StockId")]
-        public virtual Stock Stock { get; set; }*/
+        // Foreign key   
+        //[Display(Name = "Stock Id")]
+        //public virtual string StockId { get; set; }
+
+        //[ForeignKey("Id")]
+        //public virtual Stock Stock { get; set; }
+
+        
 
 
 
