@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Stockify.Data;
 using Stockify.Models;
 
@@ -35,8 +36,8 @@ namespace Stockify.Controllers
         }*/
         public ActionResult Crypto(string searchString)
         {
-            var allCryptos = from s in stockifyDB.Cryptos
-                            select s;
+            var allCryptos = from s in stockifyDB.Cryptos.Include(n => n.Company)
+                             select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 allCryptos = allCryptos.Where(s => s.Name.Contains(searchString));
@@ -103,6 +104,7 @@ namespace Stockify.Controllers
                 editcyrpto.MarketCap = double.Parse(cyyptocollection["MarketCap"]);
                 editcyrpto.Price = double.Parse(cyyptocollection["Price"]);
                 editcyrpto.CreatedBy = cyyptocollection["CreatedBy"];
+                editcyrpto.CompanyId = cyyptocollection["CompanyId"];
                 stockifyDB.SaveChanges(); 
                 return RedirectToAction("Crypto");
             }

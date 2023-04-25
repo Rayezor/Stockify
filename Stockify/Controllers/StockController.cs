@@ -69,7 +69,7 @@ namespace Stockify.Controllers
         }*/
         public ActionResult Stock(string searchString)
         {
-            var allStocks = from s in stockifyDB.Stocks
+            var allStocks = from s in stockifyDB.Stocks.Include(n => n.Company)
                             select s;
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -147,9 +147,10 @@ namespace Stockify.Controllers
             {
                 Stock stock = stockifyDB.Stocks.FirstOrDefault(p => p.Id.Equals(id));
                 stock.Name = stockCollection["Name"];
-                stock.Price = int.Parse(stockCollection["Price"]);
-                stock.MarketCap = int.Parse(stockCollection["MarketCap"]);
-                stock.EPS = int.Parse(stockCollection["EPS"]);
+                stock.Price = double.Parse(stockCollection["Price"]);
+                stock.MarketCap = double.Parse(stockCollection["MarketCap"]);
+                stock.EPS = double.Parse(stockCollection["EPS"]);
+                stock.CompanyId = (stockCollection["CompanyId"]);
                 stockifyDB.SaveChanges();
                 return RedirectToAction("Stock");
             }

@@ -7,7 +7,7 @@
 <h1>Stock Details</h1>
 
 <div>
-    <h4>@Html.DisplayFor(model => model.Name) Stock</h4>
+    <h4>@Html.DisplayFor(model => model.Name) Stock Details</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -58,12 +58,30 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PERatio)
         </dd>
-@*        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyId)
+    </dl>
+</div>
+<div>
+    <h4>@Html.DisplayFor(model => model.Company.CompanyName) Company Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Employees)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompanyId)
-        </dd>*@
+            @Html.DisplayFor(model => model.Company.Employees)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Industry)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Industry)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Headquarters)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Headquarters)
+        </dd>
     </dl>
 </div>
 <div>
@@ -81,7 +99,7 @@
 </style>
 
 
-
+@*
 
 @{
     string CurrentStockName = ViewBag.CurrentStock;
@@ -93,9 +111,14 @@
         if (company.CompanyName == CurrentStockName)
         {
             <div1>
-            <h1></h1>
-                <a href="../../Company/Details/@Html.DisplayFor(model => model.Name)"> <input type="submit" value="@Html.DisplayFor(model => model.Name) Company Details" class="btn btn-success" />  </a>
+                <h1> </h1>
+                <p> - - - This Company exists in our database! - - -</p>
+                <a href="../../Company/Details/@Html.DisplayFor(model => model.Name)"> <input type="submit" value="Click here to view Company Details" class="btn btn-warning" />  </a>
             </div1>
+            //<div1>
+            //<h1></h1>
+            //    <a href="../../Company/Details/@Html.DisplayFor(model => model.Name)"> <input type="submit" value="@Html.DisplayFor(model => model.Name) Company Details" class="btn btn-success" />  </a>
+            //</div1>
         }
         else
         {
@@ -104,5 +127,5 @@
 
     }
 }
-
+*@
 
