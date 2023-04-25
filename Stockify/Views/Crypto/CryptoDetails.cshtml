@@ -57,6 +57,30 @@
     </dl>
 </div>
 <div>
+    <h4>@Html.DisplayFor(model => model.Company.CompanyName) Company Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Employees)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Employees)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Industry)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Industry)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Headquarters)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Headquarters)
+        </dd>
+    </dl>
+</div>
+<div>
     <a class="btn btn-outline-primary" asp-action="EditCrypto" asp-route-id="@Model?.Id"><i class="bi bi-pencil-square"></i>Edit Crypto Details</a> | |
     <a class="btn btn-outline-info" asp-action="Crypto">Back to List</a>
 </div>
