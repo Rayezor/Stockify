@@ -144,7 +144,10 @@ namespace Stockify.Controllers
 
         }
 
-
+        public ActionResult CreatePortfolio()
+        {
+            return RedirectToAction("Portfolio1", "Portfolio1");
+        }
 
 
     }

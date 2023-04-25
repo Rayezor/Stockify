@@ -4,7 +4,7 @@
     ViewData["Title"] = "Portfolio";
 }
 
-<h1>Portfolio</h1>
+<h1>Portfolio for Stocks</h1>
 
 <table class="table">
     <thead>
@@ -75,9 +75,10 @@
     </tbody>
 </table>
 
-<h3> Total price of portfolio: € @ViewBag.TotalPrice</h3>
+<h3> Total price of Stocks Portfolio: € @ViewBag.TotalPrice</h3>
 <p>
     <a class="btn btn-outline-info" asp-action="GoToStocks">Show Stocks</a>
+    <a class="btn btn-outline-info" asp-action="DeletePortfolio">Clear Portfolio</a>
 </p>
 @*<h5>@Html.ActionLink("Go to Stocks", "GoToStocks") </h5>*@
 @*<h5>@Html.ActionLink("Go to Portfolio", "GoToPortfolio") </h5>*@

@@ -6,53 +6,52 @@ using Stockify.Models;
 
 namespace Stockify.Controllers
 {
-    public class PortfolioController : Controller
+    public class Portfolio1Controller : Controller
     {
-        private static Portfolio portfolio = new Portfolio();
+        private static Portfolio1 portfolio = new Portfolio1();
 
         private StockifyContext stockifyDB;
-        public PortfolioController()
+        public Portfolio1Controller()
         {
             stockifyDB = new StockifyContext();
             stockifyDB.Database.EnsureCreated();
         }
-        public ActionResult Portfolio()
+        public ActionResult Portfolio1()
         {
-            ViewBag.TotalPrice = portfolio.CalculateTotalPrice();
-            return View(stockifyDB.Stocks);
+            ViewBag.TotalPrice1 = portfolio.CalculateTotalPrice();
+            return View(stockifyDB.Cryptos);
+        }
+
+        public ActionResult DeletePortfolio1()
+        {
+            portfolio.deleteportfolio1();
+            return RedirectToAction("Portfolio1");
         }
 
 
-        public ActionResult DeletePortfolio()
-        {
-            portfolio.deleteportfolio();
-            return RedirectToAction("Portfolio");
-        }
-
-
-        public ActionResult AddToPortfolio(string id)
+        public ActionResult AddToPortfolio1(string id)
         {
             try
             {
-                foreach (Stock stock in stockifyDB.Stocks)
+                foreach (Crypto crypto in stockifyDB.Cryptos)
                 {
-                    if (stock.Id == id)
+                    if (crypto.Id == id)
                     {
-                        portfolio.AddStock(stock);
+                        portfolio.AddCrypto(crypto);
                         break;
                     }
                 }
 
-                return RedirectToAction("Portfolio");
+                return RedirectToAction("Portfolio1");
             }
             catch
             {
                 return View();
             }
         }
-        public ActionResult GoToStocks()
+        public ActionResult GoToCrypto()
         {
-            return RedirectToAction("Stock","Stock");
+            return RedirectToAction("Crypto", "Crypto");
         }
         /*public ActionResult GoToPortfolio()
         {

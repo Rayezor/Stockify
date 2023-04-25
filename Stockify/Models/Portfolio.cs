@@ -1,4 +1,6 @@
-﻿namespace Stockify.Models
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Stockify.Models
 {
     public class Portfolio
     {
@@ -21,9 +23,17 @@
                 match.Quantity++;
             }
         }
+
+
         public double CalculateTotalPrice()
         {
             return _stocks.Sum(stock => stock.Price * stock.Quantity);
+        }
+
+        public double deleteportfolio()
+        {
+            _stocks.Clear();
+            return _stocks.Count();
         }
     }
 }
