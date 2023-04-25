@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Net.Security;
 
 namespace Stockify.Models
@@ -31,10 +32,12 @@ namespace Stockify.Models
         [Display(Name = "Date Created")]
         public DateTime DateCreated { get; set; }
 
-
+        // Foreign key 
         [Display(Name = "Created By")]
         public string CreatedBy { get; set; }
 
+        [ForeignKey("CompanyName")]
+        public virtual Company Company { get; set; }
 
 
     }
