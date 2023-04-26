@@ -99,7 +99,7 @@
 </style>
 
 
-@*
+
 
 @{
     string CurrentStockName = ViewBag.CurrentStock;
@@ -113,7 +113,7 @@
             <div1>
                 <h1> </h1>
                 <p> - - - This Company exists in our database! - - -</p>
-                <a href="../../Company/Details/@Html.DisplayFor(model => model.Name)"> <input type="submit" value="Click here to view Company Details" class="btn btn-warning" />  </a>
+                <a href="../../Company/Details/@Html.DisplayFor(model => model.CompanyId)"> <input type="submit" value="Click here to view Company Details" class="btn btn-warning" />  </a>
             </div1>
             //<div1>
             //<h1></h1>
@@ -127,5 +127,5 @@
 
     }
 }
-*@
+
 
