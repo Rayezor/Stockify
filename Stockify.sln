@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockifyTest", "StockifyTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockifyAPI", "StockifyAPI\StockifyAPI.csproj", "{34A73726-8BA5-48F3-9C0D-CF87FD627E54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockifyAPIConsoleApp", "StockifyAPIConsoleApp\StockifyAPIConsoleApp.csproj", "{B0C319CF-CAE1-4ECB-9249-ED46E67B7D38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{34A73726-8BA5-48F3-9C0D-CF87FD627E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34A73726-8BA5-48F3-9C0D-CF87FD627E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34A73726-8BA5-48F3-9C0D-CF87FD627E54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0C319CF-CAE1-4ECB-9249-ED46E67B7D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0C319CF-CAE1-4ECB-9249-ED46E67B7D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0C319CF-CAE1-4ECB-9249-ED46E67B7D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0C319CF-CAE1-4ECB-9249-ED46E67B7D38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
