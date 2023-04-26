@@ -37,9 +37,8 @@ namespace Stockify.Models
         public string CreatedBy { get; set; }
        // public string CompanyId { get; set; }
 
-
-        // Foreign key 
         public string CompanyId { get; set; }
+
         [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
 
