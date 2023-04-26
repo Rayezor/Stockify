@@ -121,6 +121,7 @@ namespace Stockify.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 stockifyDB.Stocks.Add(newStock);
                 stockifyDB.SaveChanges();
                 return RedirectToAction("Stock");
@@ -163,7 +164,7 @@ namespace Stockify.Controllers
         // GET: StockController/Delete/5
         public ActionResult DeleteStock(string id)
         {
-            var stock = stockifyDB.Stocks.Where(c => c.Id == id).FirstOrDefault();
+            var stock = stockifyDB.Stocks.Include(n => n.Company).Where(c => c.Id == id).FirstOrDefault();
             return View(stock);
         }
 
@@ -175,7 +176,7 @@ namespace Stockify.Controllers
             try
             {
 
-                var stock = stockifyDB.Stocks.Where(c => c.Id == Id).FirstOrDefault();
+                var stock = stockifyDB.Stocks.Include(n => n.Company).Where(c => c.Id == Id).FirstOrDefault();
                 stockifyDB.Stocks.Remove(stock);
                 stockifyDB.SaveChanges();
                 return RedirectToAction("Stock");
