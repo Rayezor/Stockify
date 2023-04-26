@@ -12,10 +12,18 @@ namespace StockifyAPI.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-        private readonly ApiContext _context;
-        public CompanyController(ApiContext context)
+        //private readonly ApiContext _context;
+        //public CompanyController(ApiContext context)
+        //{
+        //    _context = context;
+        //}
+
+        private ApiContext stockifyDB;
+        public CompanyController()
         {
-            _context = context;
+            stockifyDB = new ApiContext();
+            stockifyDB.Database.EnsureCreated();
+
         }
 
 
@@ -23,7 +31,7 @@ namespace StockifyAPI.Controllers
         [HttpGet]
         public JsonResult Get(string id)
         {
-            var result = _context.Companies.Find(id);
+            var result = stockifyDB.Companies.Find(id);
             if (result == null)
                 return new JsonResult(NotFound());
             return new JsonResult(Ok(result));
@@ -33,7 +41,7 @@ namespace StockifyAPI.Controllers
         [HttpGet("/GetAll")]
         public JsonResult GetAll()
         {
-            var result = _context.Companies.ToList();
+            var result = stockifyDB.Companies.ToList();
             
             return new JsonResult(Ok(result));
         }
