@@ -62,6 +62,11 @@ namespace Stockify.Controllers
             }
         }
 
+        public ActionResult CreateCrypto()
+        {
+            return View();
+        }
+
         // GET: CryptoController/Create
         public ActionResult CreateCrypto(Crypto newcrypto)
         {
