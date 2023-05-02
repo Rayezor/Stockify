@@ -19,5 +19,6 @@ namespace Stockify.Data
             optionsBuilder.UseSqlServer(ConnectionString);
 
         }
+
     }
 }

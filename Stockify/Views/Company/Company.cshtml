@@ -47,9 +47,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Headquarters)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StockId)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -80,9 +77,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Headquarters)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StockId)
-             </td>
             <td>
                 <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a> |
                 <a class="bn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details</a> |

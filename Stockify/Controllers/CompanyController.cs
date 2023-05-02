@@ -24,8 +24,8 @@ namespace Stockify.Controllers
         {
             // Count how many companies exist in the database
             ViewBag.Amount = stockifyDB.Companies.Count().ToString();
-            
-            // variable with all companies
+            // ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var companies = from s in stockifyDB.Companies.Include(n => n.Stock)
                             select s;
             //  look for existing company based on search input
@@ -102,8 +102,6 @@ namespace Stockify.Controllers
                 company.Address = collection["Address"];
                 company.PhoneNumber = collection["PhoneNumber"];
                 company.Headquarters = collection["Headquarters"];
-                company.StockId = collection["StockId"];
-                
                 stockifyDB.SaveChanges();
                 return RedirectToAction("Company");
             }
@@ -117,7 +115,7 @@ namespace Stockify.Controllers
         // GET: CompanyController/Delete
         public ActionResult DeleteCompany(string id)
         {
-            var company = stockifyDB.Companies.Include(n => n.Stock).Where(c => c.Id == id).FirstOrDefault();
+            var company = stockifyDB.Companies.Include(n => n.Stock).Include(n => n.Crypto).Where(c => c.Id == id).FirstOrDefault();
             return View(company);
         }
 
@@ -128,7 +126,7 @@ namespace Stockify.Controllers
         {
             try
             {
-                var company = stockifyDB.Companies.Include(n=>n.Stock).Where(c => c.Id == id).FirstOrDefault();
+                var company = stockifyDB.Companies.Include(n=>n.Stock).Include(n => n.Crypto).Where(c => c.Id == id).FirstOrDefault();
                 stockifyDB.Companies.Remove(company);
                 stockifyDB.SaveChanges();
                 

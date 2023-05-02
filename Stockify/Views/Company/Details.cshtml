@@ -10,12 +10,12 @@
     <h4>@Html.DisplayFor(model => model.CompanyName) Company Details</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+@*        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Id)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Id)
-        </dd>
+        </dd>*@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CompanyName)
         </dt>
@@ -58,12 +58,18 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Headquarters)
         </dd>
-        <dt class="col-sm-2">
+@*        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.StockId)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.StockId)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CryptoId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CryptoId)
+        </dd>*@
     </dl>
 </div>
 <div>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stockify.Data;
 
@@ -11,9 +12,11 @@ using Stockify.Data;
 namespace Stockify.Migrations
 {
     [DbContext(typeof(StockifyContext))]
-    partial class StockifyContextModelSnapshot : ModelSnapshot
+    [Migration("20230427214037_UpdateBeforeCryptoFK")]
+    partial class UpdateBeforeCryptoFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,9 +36,6 @@ namespace Stockify.Migrations
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CryptoId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Employees")
                         .HasColumnType("int");
@@ -59,8 +59,6 @@ namespace Stockify.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CryptoId");
 
                     b.HasIndex("StockId");
 
@@ -139,15 +137,9 @@ namespace Stockify.Migrations
 
             modelBuilder.Entity("Stockify.Models.Company", b =>
                 {
-                    b.HasOne("Stockify.Models.Crypto", "Crypto")
-                        .WithMany()
-                        .HasForeignKey("CryptoId");
-
                     b.HasOne("Stockify.Models.Stock", "Stock")
                         .WithMany()
                         .HasForeignKey("StockId");
-
-                    b.Navigation("Crypto");
 
                     b.Navigation("Stock");
                 });

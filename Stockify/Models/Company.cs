@@ -35,14 +35,20 @@ namespace Stockify.Models
         [Display(Name = "Headquarters Location")]
         public string Headquarters { get; set; }
 
-        // Foreign key   
-        [Display(Name = "Stock Id")]
+        // Foreign keys
+        [Display(Name = "Ticker Symbol")]
         public string StockId { get; set; }
 
         [ForeignKey("StockId")]
         public Stock Stock { get; set; }
 
-        
+        [Display(Name = "Crypto Id")]
+        public string CryptoId { get; set; }
+
+        [ForeignKey("CryptoId")]
+        public Crypto Crypto { get; set; }
+
+
 
 
 
