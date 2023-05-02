@@ -18,22 +18,6 @@ namespace Stockify.Controllers
         }
 
 
-        //private static List<Crypto> cryptolist = new List<Crypto>()
-        //{
-        //    new Crypto{Id = "TSLA", Name="Bitcoin", Prefix="BTC", MarketCap=489.6, Price=29485, DateCreated=new DateTime(2004, 1, 7), CreatedBy="Tesla Inc."},
-        //    new Crypto{Id = "AMZN", Name="Elongate", Prefix="ELG", MarketCap=23, Price=0.32, DateCreated=new DateTime(2017, 4, 8), CreatedBy="Amazon.com, Inc."},
-        //    new Crypto{Id = "AAPL", Name="Doge", Prefix="DOG", MarketCap=180.2, Price=4.89, DateCreated=new DateTime(2019, 8, 16), CreatedBy="Apple Inc"},
-        //    new Crypto{Id = "MAERSK-B.CO", Name="Litecoin", Prefix="LTC", MarketCap=293.9, Price=10.3, DateCreated=new DateTime(2001, 3, 27), CreatedBy="A.P. Møller - Mærsk A/Sc"}
-
-        //};
-
-
-
-        // GET: CryptoController
-        /*public ActionResult Crypto()
-        {
-            return View(stockifyDB.Cryptos.OrderBy(s => s.Id).ToList());
-        }*/
         public ActionResult Crypto(string searchString)
         {
             var allCryptos = from s in stockifyDB.Cryptos.Include(n => n.Company)
@@ -44,6 +28,7 @@ namespace Stockify.Controllers
             }
             return View(allCryptos);
         }
+
 
         // GET: CryptoController/Details
         public ActionResult CryptoDetails(string id)
@@ -62,7 +47,16 @@ namespace Stockify.Controllers
             }
         }
 
+
+        public ActionResult CreateCrypto()
+        {
+            return View();
+        }
+
+
         // GET: CryptoController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateCrypto(Crypto newcrypto)
         {
             if (ModelState.IsValid)
@@ -115,13 +109,11 @@ namespace Stockify.Controllers
         }
 
 
-
         public ActionResult DeleteCrypto(string id)
         {
             var crypt = stockifyDB.Cryptos.Where(c => c.Id == id).FirstOrDefault();
             return View(crypt);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -145,6 +137,7 @@ namespace Stockify.Controllers
             }
 
         }
+
 
         public ActionResult CreatePortfolio()
         {
