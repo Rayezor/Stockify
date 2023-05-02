@@ -5,6 +5,7 @@ using StockifyAPI.Models;
    
 namespace StockifyAPI.Models
 {
+        // Company model
         public class Company
         {
 
@@ -36,12 +37,7 @@ namespace StockifyAPI.Models
             [Display(Name = "Headquarters Location")]
             public string Headquarters { get; set; }
 
-            // Foreign key   
-            //[Display(Name = "Stock Id")]
-            //public virtual string StockId { get; set; }
-
-            //[ForeignKey("Id")]
-            //public virtual Stock Stock { get; set; }
+            
 
 
 

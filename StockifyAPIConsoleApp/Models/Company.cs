@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
    
 namespace StockifyAPIConsoleApp.Models
 {
+        // Company Model
         public class Company
         {
 
@@ -36,13 +37,7 @@ namespace StockifyAPIConsoleApp.Models
             [Display(Name = "Headquarters Location")]
             public string Headquarters { get; set; }
 
-            // Foreign key   
-            //[Display(Name = "Stock Id")]
-            //public virtual string StockId { get; set; }
-
-            //[ForeignKey("Id")]
-            //public virtual Stock Stock { get; set; }
-
+          
 
 
 

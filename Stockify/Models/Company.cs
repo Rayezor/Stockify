@@ -5,6 +5,7 @@ namespace Stockify.Models
 {
     public class Company
     {
+        // Company Model
 
         [Key]
         [Required(ErrorMessage = "ID Cannot be blank")]
